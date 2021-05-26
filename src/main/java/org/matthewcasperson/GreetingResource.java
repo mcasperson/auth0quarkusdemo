@@ -17,8 +17,15 @@ public class GreetingResource {
     JsonWebToken idToken;
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_HTML)
     public String hello() {
-        return "Hello " + this.idToken.getClaim("email");
+        String html = """
+                <html>
+                    <body>
+                        <h1>Hello %s</h1>
+                    </body>
+                </html>
+                """;
+        return html.formatted(idToken.getClaim("email").toString());
     }
 }
