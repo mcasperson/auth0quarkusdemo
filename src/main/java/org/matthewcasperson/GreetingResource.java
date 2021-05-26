@@ -20,13 +20,11 @@ public class GreetingResource {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String hello() {
-        String html = """
-                <html>
-                    <body>
-                        <h1>Hello %s</h1>
-                    </body>
-                </html>
-                """;
-        return html.formatted(Optional.ofNullable(idToken.getClaim("email")).map(Object::toString));
+        return
+                "<html>\n" +
+                "    <body>\n" +
+                "        <h1>Hello " + idToken.getClaim("email") + "</h1>\n" +
+                "    </body>\n"+
+                "</html>\n";
     }
 }
