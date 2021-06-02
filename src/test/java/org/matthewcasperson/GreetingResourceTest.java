@@ -16,5 +16,4 @@ public class GreetingResourceTest {
           .then()
              .statusCode(403);
     }
-
 }
