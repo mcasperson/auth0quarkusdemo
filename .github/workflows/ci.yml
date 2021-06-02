@@ -4,9 +4,9 @@ name: Quarkus Codestart CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -18,4 +18,6 @@ jobs:
         with:
           java-version: 11
       - name: Build
+        env:
+          AUTH0SECRET: ${{ secrets.AUTH0SECRET }}
         run: ./mvnw verify -B
