@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Optional;
 
-@Path("/hello")
+@Path("/")
 public class GreetingResource {
 
     @Inject
