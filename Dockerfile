@@ -1,5 +1,9 @@
 FROM ghcr.io/graalvm/graalvm-ce:latest as BUILD
 WORKDIR /work/
+COPY pom.xml .
+COPY mvnw .
+COPY .mvn .mvn/
+RUN ./mvnw dependency:go-offline
 COPY . ./
 RUN gu install native-image
 RUN ./mvnw package -Pnative -Dmaven.test.skip=true
